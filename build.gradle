@@ -6,14 +6,15 @@ apply plugin: "sonar-runner"
 
 group 'com.bs.ifx'
 version '1.0-SNAPSHOT'
-sourceCompatibility = 1.6
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 buildscript {
     repositories {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.3.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.6.RELEASE")
     }
 }
 
@@ -24,7 +25,7 @@ repositories {
 task genJaxb {
     ext.sourcesDir = "${buildDir}/generated-sources/jaxb"
     ext.classesDir = "${buildDir}/classes/jaxb"
-    ext.schema = "src/main/resources/*.xsd"
+    ext.schema = "src/main/resources/test.wsdl"
 
     outputs.dir classesDir
 

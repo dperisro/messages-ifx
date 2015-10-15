@@ -1,0 +1,24 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://mycompany.com/ifx/party"
+           targetNamespace="http://mycompany.com/ifx/party" xmlns:ifx="http://www.ifxforum.org/IFX_2X" elementFormDefault="qualified">
+
+        <xs:import namespace="http://www.ifxforum.org/IFX_2X"
+                    schemaLocation="Party.xsd" />
+
+    <xs:element name="getCountryRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getCountryResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="country" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+</xs:schema>

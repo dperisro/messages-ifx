@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:ifx="http://www.ifxforum.org/IFX_2X" xmlns:tns="http://mycompany.com/ifx/party"
+	targetNamespace="http://mycompany.com/ifx/party">
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://mycompany.com/ifx/party">
+			<xsd:import namespace="http://www.ifxforum.org/IFX_2X"
+				schemaLocation="Party.xsd" />
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="PartyInqRq">
+		<wsdl:part element="ifx:PartyInqRq" name="PartyInqRq" />
+	</wsdl:message>
+	<wsdl:message name="PartyInqRs">
+		<wsdl:part element="ifx:PartyInqRs" name="PartyInqRs" />
+	</wsdl:message>
+
+	<wsdl:portType name="PartyService">
+		<wsdl:operation name="Inq">
+			<wsdl:input message="tns:PartyInqRq" name="PartyInqRq" />
+			<wsdl:output message="tns:PartyInqRs" name="PartyInqRs" />
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="PartyServiceBinding" type="tns:PartyService">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="Inq">
+			<soap:operation soapAction="http://mycompany.com/ifx/party/inq" />
+			<wsdl:input name="PartyInqRq">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="PartyInqRs">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsdl:service name="PartyService">
+		<wsdl:port binding="tns:PartyServiceBinding" name="PartyServicePort">
+			<soap:address location="http://localhost:8080/PartyService/" />
+		</wsdl:port>
+	</wsdl:service>
+
+</wsdl:definitions>
